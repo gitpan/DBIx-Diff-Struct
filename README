@@ -2,7 +2,7 @@ NAME
     DBIx::Diff::Struct - Compare structure of two DBI databases
 
 VERSION
-    This document describes version 0.01 of DBIx::Diff::Struct (from Perl
+    This document describes version 0.02 of DBIx::Diff::Struct (from Perl
     distribution DBIx-Diff-Struct), released on 2014-09-12.
 
 SYNOPSIS

@@ -29,7 +29,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=DBIx-Diff-Struct
   homepage: https://metacpan.org/release/DBIx-Diff-Struct
   repository: git://github.com/perlancar/perl-DBIx-Diff-Struct.git
-version: '0.01'
+version: '0.02'
 x_Dist_Zilla:
   perl:
     version: '5.018002'
@@ -222,7 +222,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Rinci::Validate
       name: '@Author::PERLANCAR/Rinci::Validate'
-      version: '0.14'
+      version: '0.18'
     -
       class: Dist::Zilla::Plugin::SetScriptShebang
       name: '@Author::PERLANCAR/SetScriptShebang'

@@ -1,7 +1,7 @@
 package DBIx::Diff::Struct;
 
 our $DATE = '2014-09-12'; # DATE
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 use 5.010001;
 use strict;
@@ -141,9 +141,9 @@ _
     "x.perinci.sub.wrapper.disable_validate_args" => 1,
 };
 sub diff_table_struct {
-    my $dbh1    = shift; require Scalar::Util;my $_sahv_dpath = []; my $arg_err; ((defined($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { return [400, "Invalid argument value for dbh1: $arg_err"] } # VALIDATE_ARG
-    my $dbh2    = shift; ((defined($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { return [400, "Invalid argument value for dbh2: $arg_err"] } # VALIDATE_ARG
-    my $table   = shift; ((defined($table)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((!ref($table)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type text"),0)); if ($arg_err) { return [400, "Invalid argument value for table: $arg_err"] } # VALIDATE_ARG
+    my $dbh1    = shift; require Scalar::Util;my $_sahv_dpath = []; my $arg_err; ((defined($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for dbh1: $arg_err" } # VALIDATE_ARG
+    my $dbh2    = shift; ((defined($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for dbh2: $arg_err" } # VALIDATE_ARG
+    my $table   = shift; ((defined($table)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((!ref($table)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type text"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for table: $arg_err" } # VALIDATE_ARG
 
     #$log->tracef("Comparing table %s ...", $table);
 
@@ -220,8 +220,8 @@ _
     "x.perinci.sub.wrapper.disable_validate_args" => 1,
 };
 sub diff_db_struct {
-    my $dbh1 = shift; require Scalar::Util;my $_sahv_dpath = []; my $arg_err; ((defined($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { return [400, "Invalid argument value for dbh1: $arg_err"] } # VALIDATE_ARG
-    my $dbh2 = shift; ((defined($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { return [400, "Invalid argument value for dbh2: $arg_err"] } # VALIDATE_ARG
+    my $dbh1 = shift; require Scalar::Util;my $_sahv_dpath = []; my $arg_err; ((defined($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { die "diff_db_struct(): " . "Invalid argument value for dbh1: $arg_err" } # VALIDATE_ARG
+    my $dbh2 = shift; ((defined($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { die "diff_db_struct(): " . "Invalid argument value for dbh2: $arg_err" } # VALIDATE_ARG
 
     my @tables1 = _list_tables($dbh1);
     my @tables2 = _list_tables($dbh2);
@@ -268,7 +268,7 @@ DBIx::Diff::Struct - Compare structure of two DBI databases
 
 =head1 VERSION
 
-This document describes version 0.01 of DBIx::Diff::Struct (from Perl distribution DBIx-Diff-Struct), released on 2014-09-12.
+This document describes version 0.02 of DBIx::Diff::Struct (from Perl distribution DBIx-Diff-Struct), released on 2014-09-12.
 
 =head1 SYNOPSIS
 
