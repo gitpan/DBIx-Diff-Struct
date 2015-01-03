@@ -1,136 +1,16 @@
-NAME
-    DBIx::Diff::Struct - Compare structure of two DBI databases
-
-VERSION
-    This document describes version 0.02 of DBIx::Diff::Struct (from Perl
-    distribution DBIx-Diff-Struct), released on 2014-09-12.
-
 SYNOPSIS
-     use DBIx::Diff::Struct qw(diff_db_struct diff_table_struct);
 
+     use DBIx::Diff::Struct qw(diff_db_struct diff_table_struct);
+    
      my $res = diff_db_struct($dbh1, 'dbname1', $dbh2, 'dbname2');
 
     See function's documentation for sample result structure.
 
 DESCRIPTION
+
     Currently only tested on Postgres and SQLite.
 
-FUNCTIONS
-  diff_db_struct($dbh1, $dbh2) -> any
-    Compare structure of two DBI databases.
-
-    This function compares structures of two DBI databases. You supply two
-    "DBI" database handles and this function will return a hash:
-
-     {
-         # list of tables found in first db but missing in second
-         deleted_tables =E<gt> ['table1', ...],
- 
-         # list of tables found only in the second db
-         added_tables =E<gt> ['table2', ...],
- 
-         # list of modified tables, with details for each
-         modified_tables =E<gt> {
-             table3 =E<gt> {
-                 deleted_columns =E<gt> [...],
-                 added_columns =E<gt> [...],
-                 modified_columns =E<gt> {
-                     column1 =E<gt> {
-                         old_type =E<gt> '...',
-                         new_type =E<gt> '...',
-                         ...
-                     },
-                 },
-             },
-         },
-     }
-
-    Arguments ('*' denotes required arguments):
-
-    *   dbh1* => *obj*
-
-        DBI database handle for the first table.
-
-    *   dbh2* => *obj*
-
-        DBI database handle for the second table.
-
-    Return value:
-
-     (any)
-
-  diff_table_struct($dbh1, $dbh2, $table) -> any
-    Compare structure of two DBI tables.
-
-    This function compares structures of two DBI tables. You supply two
-    "DBI" database handles along with table name and this function will
-    return a hash:
-
-     {
-         deleted_columns =E<gt> [...],
-         added_columns =E<gt> [...],
-         modified_columns =E<gt> {
-             column1 =E<gt> {
-                 old_type =E<gt> '...',
-                 new_type =E<gt> '...',
-                 ...
-             },
-         },
-     }
-
-    Arguments ('*' denotes required arguments):
-
-    *   dbh1* => *obj*
-
-        DBI database handle for the first table.
-
-    *   dbh2* => *obj*
-
-        DBI database handle for the second table.
-
-    *   table* => *str*
-
-        Table name.
-
-    Return value:
-
-     (any)
-
-TODO
-    *   Support more extensive column diff-ing
-
-        Beside just type name, nullable, and octet length/decimal digits.
-
-    *   Options to compare column ordinal position?
-
-    *   Support views
-
-    *   Compare indices
-
 SEE ALSO
+
     DBIx::Compare to compare database contents.
-
-HOMEPAGE
-    Please visit the project's homepage at
-    <https://metacpan.org/release/DBIx-Diff-Struct>.
-
-SOURCE
-    Source repository is at
-    <https://github.com/perlancar/perl-DBIx-Diff-Struct>.
-
-BUGS
-    Please report any bugs or feature requests on the bugtracker website
-    <https://rt.cpan.org/Public/Dist/Display.html?Name=DBIx-Diff-Struct>
-
-    When submitting a bug or request, please include a test-file or a patch
-    to an existing test-file that illustrates the bug or desired feature.
-
-AUTHOR
-    perlancar <perlancar@cpan.org>
-
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2014 by perlancar@cpan.org.
-
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
 

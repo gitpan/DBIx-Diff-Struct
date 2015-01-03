@@ -1,7 +1,7 @@
 package DBIx::Diff::Struct;
 
-our $DATE = '2014-09-12'; # DATE
-our $VERSION = '0.02'; # VERSION
+our $DATE = '2015-01-03'; # DATE
+our $VERSION = '0.03'; # VERSION
 
 use 5.010001;
 use strict;
@@ -19,6 +19,11 @@ our @EXPORT_OK = qw(
                );
 
 our %SPEC;
+
+$SPEC{':package'} = {
+    v => 1.1,
+    summary => 'Compare structure of two DBI databases',
+};
 
 my %common_args = (
     dbh1 => {
@@ -141,9 +146,9 @@ _
     "x.perinci.sub.wrapper.disable_validate_args" => 1,
 };
 sub diff_table_struct {
-    my $dbh1    = shift; require Scalar::Util;my $_sahv_dpath = []; my $arg_err; ((defined($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for dbh1: $arg_err" } # VALIDATE_ARG
-    my $dbh2    = shift; ((defined($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for dbh2: $arg_err" } # VALIDATE_ARG
-    my $table   = shift; ((defined($table)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((!ref($table)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type text"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for table: $arg_err" } # VALIDATE_ARG
+    my $dbh1    = shift; require Scalar::Util;my $_sahv_dpath = []; my $arg_err; ((defined($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required but not specified"),0)) && ((Scalar::Util::blessed($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Not of type object"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for dbh1: $arg_err" } # VALIDATE_ARG
+    my $dbh2    = shift; ((defined($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required but not specified"),0)) && ((Scalar::Util::blessed($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Not of type object"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for dbh2: $arg_err" } # VALIDATE_ARG
+    my $table   = shift; ((defined($table)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required but not specified"),0)) && ((!ref($table)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Not of type text"),0)); if ($arg_err) { die "diff_table_struct(): " . "Invalid argument value for table: $arg_err" } # VALIDATE_ARG
 
     #$log->tracef("Comparing table %s ...", $table);
 
@@ -220,8 +225,8 @@ _
     "x.perinci.sub.wrapper.disable_validate_args" => 1,
 };
 sub diff_db_struct {
-    my $dbh1 = shift; require Scalar::Util;my $_sahv_dpath = []; my $arg_err; ((defined($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { die "diff_db_struct(): " . "Invalid argument value for dbh1: $arg_err" } # VALIDATE_ARG
-    my $dbh2 = shift; ((defined($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::blessed($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type object"),0)); if ($arg_err) { die "diff_db_struct(): " . "Invalid argument value for dbh2: $arg_err" } # VALIDATE_ARG
+    my $dbh1 = shift; require Scalar::Util;my $_sahv_dpath = []; my $arg_err; ((defined($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required but not specified"),0)) && ((Scalar::Util::blessed($dbh1)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Not of type object"),0)); if ($arg_err) { die "diff_db_struct(): " . "Invalid argument value for dbh1: $arg_err" } # VALIDATE_ARG
+    my $dbh2 = shift; ((defined($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required but not specified"),0)) && ((Scalar::Util::blessed($dbh2)) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Not of type object"),0)); if ($arg_err) { die "diff_db_struct(): " . "Invalid argument value for dbh2: $arg_err" } # VALIDATE_ARG
 
     my @tables1 = _list_tables($dbh1);
     my @tables2 = _list_tables($dbh2);
@@ -268,7 +273,7 @@ DBIx::Diff::Struct - Compare structure of two DBI databases
 
 =head1 VERSION
 
-This document describes version 0.02 of DBIx::Diff::Struct (from Perl distribution DBIx-Diff-Struct), released on 2014-09-12.
+This document describes version 0.03 of DBIx::Diff::Struct (from Perl distribution DBIx-Diff-Struct), released on 2015-01-03.
 
 =head1 SYNOPSIS
 
@@ -294,20 +299,20 @@ database handles and this function will return a hash:
 
  {
      # list of tables found in first db but missing in second
-     deleted_tables =E<gt> ['table1', ...],
+     deleted_tables => ['table1', ...],
  
      # list of tables found only in the second db
-     added_tables =E<gt> ['table2', ...],
+     added_tables => ['table2', ...],
  
      # list of modified tables, with details for each
-     modified_tables =E<gt> {
-         table3 =E<gt> {
-             deleted_columns =E<gt> [...],
-             added_columns =E<gt> [...],
-             modified_columns =E<gt> {
-                 column1 =E<gt> {
-                     old_type =E<gt> '...',
-                     new_type =E<gt> '...',
+     modified_tables => {
+         table3 => {
+             deleted_columns => [...],
+             added_columns => [...],
+             modified_columns => {
+                 column1 => {
+                     old_type => '...',
+                     new_type => '...',
                      ...
                  },
              },
@@ -329,10 +334,7 @@ DBI database handle for the second table.
 
 =back
 
-Return value:
-
- (any)
-
+Return value:  (any)
 
 =head2 diff_table_struct($dbh1, $dbh2, $table) -> any
 
@@ -342,12 +344,12 @@ This function compares structures of two DBI tables. You supply two C<DBI>
 database handles along with table name and this function will return a hash:
 
  {
-     deleted_columns =E<gt> [...],
-     added_columns =E<gt> [...],
-     modified_columns =E<gt> {
-         column1 =E<gt> {
-             old_type =E<gt> '...',
-             new_type =E<gt> '...',
+     deleted_columns => [...],
+     added_columns => [...],
+     modified_columns => {
+         column1 => {
+             old_type => '...',
+             new_type => '...',
              ...
          },
      },
@@ -371,26 +373,7 @@ Table name.
 
 =back
 
-Return value:
-
- (any)
-
-=head1 TODO
-
-=over
-
-=item * Support more extensive column diff-ing
-
-Beside just type name, nullable, and octet length/decimal digits.
-
-=item * Options to compare column ordinal position?
-
-=item * Support views
-
-=item * Compare indices
-
-=back
-
+Return value:  (any)
 =head1 SEE ALSO
 
 L<DBIx::Compare> to compare database contents.
@@ -417,7 +400,7 @@ perlancar <perlancar@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by perlancar@cpan.org.
+This software is copyright (c) 2015 by perlancar@cpan.org.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
